@@ -7,12 +7,14 @@ string testIP2 = "255.255.255.255";
 string testIP3 = "1.1.1";
 string testIP4 = "100.015.100.015";
 string testIP5 = "200.256.256.256";
+string testIP6 = "200.0.0.255";
 
 ValidateIP(testIP1);
 ValidateIP(testIP2);
 ValidateIP(testIP3);
 ValidateIP(testIP4);
 ValidateIP(testIP5);
+ValidateIP(testIP6);
 
 
 void ValidateIP(string address)
@@ -36,6 +38,8 @@ void ValidateIP(string address)
         Console.WriteLine($"This {address} is not a valid IP address.");
     }
 
+    Console.WriteLine();
+
 }
 
 void ValidateLength(string[] splitIP)
@@ -52,15 +56,30 @@ void ValidateNoLeadingZeros(string[] splitIP)
     int validateCounter = 0;
     for (int i = 0; i < splitIP.Length; i++)
     {
-        char[] splitIPToChars = splitIP[i].ToCharArray();
-        if (Int32.TryParse(splitIPToChars[0].ToString(), out _))
+        if (Int32.TryParse(splitIP[i].ToString(), out int parsedIPInt))
         {
-            Console.WriteLine($"Section {i + 1} of the IP address does not have any leading zeros.");
-            validateCounter += 1;
-        }
-        else
-        {
-            Console.WriteLine($"Section {i + 1} of the IP address contains a leading zero.");
+            if (parsedIPInt == 0)
+            {
+                validateCounter += 1;
+            }
+            else
+            {
+                char[] splitIPToChars = splitIP[i].ToCharArray();
+                if (Int32.TryParse(splitIPToChars[0].ToString(), out int leadingDigit))
+                {
+                    if (leadingDigit != 0)
+                    {
+                        Console.WriteLine($"Section {i + 1} of the IP address does not have any leading zeros.");
+                        validateCounter += 1;
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Section {i + 1} of the IP address contains a leading zero.");
+                        break;
+                    }
+                }
+            }
         }
     }
     if (validateCounter == 4)
@@ -77,15 +96,15 @@ void ValidateIPRange(string[] splitIP)
     {
         if (Int32.TryParse(splitIP[i].ToString(), out int parsedIPInt))
         {
-            if (parsedIPInt > 0 && parsedIPInt < 256)
+            if (parsedIPInt < 0 || parsedIPInt > 255)
             {
-                Console.WriteLine($"Section {i + 1} of the IP address is within acceptable range.");
-                validateCounter += 1;
+                Console.WriteLine($"Section {i + 1} of the IP address, {parsedIPInt} is not within acceptable range.");
+                break;
             }
             else
             {
-                Console.WriteLine($"Section {i + 1} of the IP address is not within acceptable range.");
-                break;
+                Console.WriteLine($"Section {i + 1} of the IP address, {parsedIPInt} is within acceptable range.");
+                validateCounter += 1;
             }
         }
         if (validateCounter == 4)

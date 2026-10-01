@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj": {}
+    "D:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj": {}
   },
   "projects": {
-    "d:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj": {
+    "D:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj",
+        "projectUniqueName": "D:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj",
         "projectName": "validateIPAddress",
-        "projectPath": "d:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj",
+        "projectPath": "D:\\CSharpNet\\validateIPAddress\\validateIPAddress.csproj",
         "packagesPath": "C:\\Users\\ashto\\.nuget\\packages\\",
-        "outputPath": "d:\\CSharpNet\\validateIPAddress\\obj\\",
+        "outputPath": "D:\\CSharpNet\\validateIPAddress\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\ashto\\AppData\\Roaming\\NuGet\\NuGet.Config"
