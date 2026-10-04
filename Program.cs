@@ -35,7 +35,7 @@ void ValidateIP(string address)
     }
     else
     {
-        Console.WriteLine($"This {address} is not a valid IP address.");
+        Console.WriteLine($"This {address} is NOT a valid IP address.");
     }
 
     Console.WriteLine();
@@ -76,7 +76,7 @@ void ValidateNoLeadingZeros(string[] splitIP)
                     else
                     {
                         Console.WriteLine($"Section {i + 1} of the IP address contains a leading zero.");
-                        break;
+                        return;
                     }
                 }
             }
@@ -99,7 +99,7 @@ void ValidateIPRange(string[] splitIP)
             if (parsedIPInt < 0 || parsedIPInt > 255)
             {
                 Console.WriteLine($"Section {i + 1} of the IP address, {parsedIPInt} is not within acceptable range.");
-                break;
+                return;
             }
             else
             {
